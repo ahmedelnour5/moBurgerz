@@ -5,4 +5,4 @@ const menuSchema = mongoose.Schema({
 });
 
 const Menu = mongoose.model('Menu', menuSchema);
-export { Menu };
+export default Menu;

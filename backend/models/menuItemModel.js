@@ -9,4 +9,4 @@ const menuItemSchema = mongoose.Schema({
 
 const MenuItem = mongoose.model('MenuItem', menuItemSchema);
 
-export { MenuItem };
+export default MenuItem;
