@@ -1,14 +1,35 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../assets/moBurgerzLogo.png';
 
 const Header = () => {
   return (
-    <div className=" w-full mx-auto flex justify-between  p-5 items-center shadow-md">
-      <h1 className="text-2xl text-yellow-500 font-bold">mo'Burgerz</h1>
-      <ul className="flex">
-        <li className="mx-3">About</li>
-        <li className="mx-3">Menu</li>
-        <li className="mx-3">Contact</li>
-      </ul>
+    <div className=" w-full mx-auto  shadow-md">
+      <div className="container mx-auto flex justify-between  p-5 items-center">
+        <div className="w-32 h-auto">
+          <img src={logo} />
+        </div>
+        <div className="flex justify-between items-center">
+          <ul className="flex font-sans text-black">
+            <Link to={'/Menu'} className="mx-4 hover:border-b-2 border-black">
+              Menu
+            </Link>
+            <Link to={'/About'} className="mx-4 hover:border-b-2 border-black">
+              About
+            </Link>
+            <Link
+              to={'/Contact'}
+              className="mx-4 hover:border-b-2 border-black"
+            >
+              Contact
+            </Link>
+            <Link to={'/Order'} className="mx-4"></Link>
+          </ul>
+          <button className="bg-yellow-400 text-white p-2 rounded-2xl ">
+            Order
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
