@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const Menu = () => {
+const Order = () => {
   const [burgerz, setBurgerz] = useState();
   const [sides, setSides] = useState();
   const [drinks, setDrinks] = useState();
@@ -31,41 +31,43 @@ const Menu = () => {
     const submarines = menuItems.filter((item) => item.category === "Subs");
     setSubs(submarines);
   };
-
   return (
-    <div className="flex flex-col items-center justify-between">
-      <MenuCategory name="Burgerz" items={burgerz} />
-      <MenuCategory name="Subs" items={subs} />
-      <MenuCategory name="Sides" items={sides} />
-      <MenuCategory name="Drinks" items={drinks} />
+    <div>
+      <MenuSection name="Burgerz" items={burgerz} />
+      <MenuSection name="Subs" items={subs} />
+      <MenuSection name="Sides" items={sides} />
+      <MenuSection name="Drinks" items={drinks} />
     </div>
   );
 };
 
-const MenuCategory = ({ name, items }) => {
+const MenuSection = ({ name, items }) => {
   return (
-    <div className="flex w-3/6 flex-col items-center  border-double border-8 border-red-600 my-7  divide-red-600">
-      <div className=" w-full text-center p-2 odd:bg-red-600  even:bg-white">
-        <h2 className="text-4xl font-bold text-red-600 odd:text-white px-4">
-          {name}
-        </h2>
-      </div>
-      <div className="p-4">
+    <div>
+      <h3>{name}</h3>
+      <div>
         {items && items.length > 0
-          ? items.map((item) => <MenuItem key={item._id} item={item} />)
+          ? items.map((item) => <Card key={item._id} item={item} />)
           : null}
       </div>
     </div>
   );
 };
-
-const MenuItem = ({ item }) => {
+const Card = ({ item }) => {
   return (
-    <div className="flex flex-col items-center my-5 text-center">
-      <p className="text-2xl font-medium mb-0.5">{item.name}</p>
-      <p className="w-10/12 text-zinc-700 font-sm">{item.description}</p>
-    </div>
+    <a>
+      <div>
+        <div>
+          <h3>{item.name}</h3>
+        </div>
+        <div>
+          <span>{item.price}</span>
+        </div>
+        <div>
+          <p>{item.description}</p>
+        </div>
+      </div>
+    </a>
   );
 };
-
-export default Menu;
+export default Order;
