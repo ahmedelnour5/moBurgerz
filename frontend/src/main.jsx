@@ -9,11 +9,13 @@ import {
 } from 'react-router-dom';
 import './index.css';
 import Landing from './Pages/Landing.jsx';
+import Menu from './Pages/Menu.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index={true} path="/" element={<Landing />} />
+      <Route path="/Menu" element={<Menu />} />
     </Route>
   )
 );
