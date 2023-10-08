@@ -29,8 +29,8 @@ const Nav = () => {
           Contact
         </Link>
       </ul>
-      <button className="bg-yellow-400 text-white px-5 py-3 rounded ">
-        <Link to={"/Order"}>Order</Link>
+      <button className="bg-red-600 text-white font-semibold px-6 py-3  rounded-lg hover:bg-red-700">
+        <Link to={"/Order"}>Order Online</Link>
       </button>
     </div>
   );
