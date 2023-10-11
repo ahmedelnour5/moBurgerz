@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import EditItemModal from "../Components/EditItemModal";
 
 const Order = () => {
   const [burgerz, setBurgerz] = useState();
@@ -33,17 +34,17 @@ const Order = () => {
   };
   return (
     <div className="flex flex-col gap-10 items-center p-3">
-      <MenuSection name="Burgerz" items={burgerz} />
-      <MenuSection name="Subs" items={subs} />
-      <MenuSection name="Sides" items={sides} />
-      <MenuSection name="Drinks" items={drinks} />
+      <MenuSection name="Burgerz" items={burgerz} sectionID="burgerz" />
+      <MenuSection name="Subs" items={subs} sectionID="subs" />
+      <MenuSection name="Sides" items={sides} sectionID="sides" />
+      <MenuSection name="Drinks" items={drinks} sectionID="drinks" />
     </div>
   );
 };
 
-const MenuSection = ({ name, items }) => {
+const MenuSection = ({ name, items, sectionID }) => {
   return (
-    <div className="w-full flex flex-col justify-center gap-2">
+    <div className="w-full flex flex-col justify-center gap-2" id={sectionID}>
       <h2 className="text-5xl font-bold mb-4">{name}</h2>
       <div className="grid grid-cols-2 gap-6 ">
         {items && items.length > 0
@@ -54,22 +55,35 @@ const MenuSection = ({ name, items }) => {
   );
 };
 const Card = ({ item }) => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+
   return (
-    <a className="w-7/12 ">
-      <div className="bg-stone-50  p-6 shadow-lg hover:bg-stone-200 hover:scale-105 hover:ease-in-out">
-        <div className="mb-2">
-          <h3 className="text-xl font-semibold ">{item.name}</h3>
+    <>
+      <a className="w-7/12 " onClick={handleOpen}>
+        <MenuItemDetails menuItem={item} />
+      </a>
+      <EditItemModal open={open} onClose={() => setOpen(false)}>
+        <div className="flex flex-col items-center">
+          {item.description.split(",")}
         </div>
-        <div className="mb-2">
-          <span className="text-lg "> ${item.price}</span>
-        </div>
-        {item.description && item.description != "" ? (
-          <div>
-            <p className="w-96  text-sm">{item.description}</p>
-          </div>
-        ) : null}
-      </div>
-    </a>
+      </EditItemModal>
+    </>
   );
 };
+
+const MenuItemDetails = ({ menuItem }) => {
+  return (
+    <div className="bg-white  p-6 shadow-lg hover:shadow-2xl hover:cursor-pointer rounded-xl">
+      <div className="mb-2">
+        <h3 className="text-xl font-semibold ">{menuItem.name}</h3>
+      </div>
+      <div className="mb-2">
+        <span className="text-lg "> ${menuItem.price}</span>
+      </div>
+      {menuItem.description && menuItem.description != "" ? <div></div> : null}
+    </div>
+  );
+};
+
 export default Order;

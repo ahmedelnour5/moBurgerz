@@ -1,11 +1,11 @@
-import React from 'react';
-import truckImage from '../assets/white_truck.jpeg';
+import React from "react";
+import truckImage from "../assets/white_truck.jpeg";
 
 const Landing = () => {
   return (
     <div className="flex flex-wrap flex-col items-center justify-center">
       <img src={truckImage} className="block w-[700px] h-auto" />
-      <p className="leading-9 text-2xl mt-9 w-5/6 font-sm tracking-tight    p-4">
+      <p className="leading-relaxed text-2xl mt-9 w-5/6 font-sm tracking-tight    p-4">
         Mo'Burgerz DC is bringing Washington, DC mo' and mo' burgers to sink
         their teeth into. Yes, you probably could've guessed as much. What you
         might not guess, however, is that Mo'Burgerz DC is committed to that

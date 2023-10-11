@@ -24,7 +24,7 @@ const Menu = () => {
   const filterItems = (menuItems) => {
     const burgers = menuItems.filter((item) => item.category === "Burgerz");
     setBurgerz(burgers);
-    const beverages = menuItems.filter((item) => item.category === "drinks");
+    const beverages = menuItems.filter((item) => item.category === "Drinks");
     setDrinks(beverages);
     const sideDishes = menuItems.filter((item) => item.category === "Sides");
     setSides(sideDishes);
