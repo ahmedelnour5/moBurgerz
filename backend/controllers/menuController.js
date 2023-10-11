@@ -12,7 +12,10 @@ const getMenu = asyncHandler(async (req, res) => {
 });
 
 const getOrderMenu = asyncHandler(async (req, res) => {
-  const items = await MenuItem.find().sort({ category: 1 });
+  const items = await MenuItem.find()
+    .populate("modifications")
+    .sort({ category: 1 });
+
   if (items) {
     res.status(200).json(items);
   } else {
@@ -20,4 +23,4 @@ const getOrderMenu = asyncHandler(async (req, res) => {
   }
 });
 
-export { getMenu };
+export { getMenu, getOrderMenu };
