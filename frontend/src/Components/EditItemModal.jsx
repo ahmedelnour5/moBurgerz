@@ -16,7 +16,7 @@ const EditItemModal = ({ open, onClose, children }) => {
       id="wrapper"
     >
       <div className="w-[600px] ">
-        <div className=" bg-white p-3 rounded-md h-[400px] flex flex-col">
+        <div className=" bg-white p-3 rounded-md h-[500px] flex flex-col">
           <button
             className="text-red-500 text-xl place-self-end font-bold"
             onClick={() => onClose()}

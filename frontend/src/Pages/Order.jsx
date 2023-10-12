@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import EditItemModal from "../Components/EditItemModal";
+import Customization from "../Components/Customization";
 
 const Order = () => {
   const [burgerz, setBurgerz] = useState();
@@ -11,7 +12,7 @@ const Order = () => {
   useEffect(() => {
     const getMenu = async () => {
       try {
-        const response = await axios.get("/api/menu");
+        const response = await axios.get("/api/menu/Order");
 
         filterItems(response.data);
       } catch (error) {
@@ -64,9 +65,7 @@ const Card = ({ item }) => {
         <MenuItemDetails menuItem={item} />
       </a>
       <EditItemModal open={open} onClose={() => setOpen(false)}>
-        <div className="flex flex-col items-center">
-          {item.description.split(",")}
-        </div>
+        <Customization menuItem={item} />
       </EditItemModal>
     </>
   );
