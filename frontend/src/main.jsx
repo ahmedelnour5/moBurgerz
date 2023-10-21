@@ -11,13 +11,18 @@ import "./index.css";
 import Landing from "./Pages/Landing.jsx";
 import Menu from "./Pages/Menu.jsx";
 import Order from "./Pages/Order.jsx";
+import ShoppingCartProvider from "./Context/ShoppingCartContext.jsx";
+import About from "./Pages/About.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index={true} path="/" element={<Landing />} />
       <Route path="/Menu" element={<Menu />} />
-      <Route path="/Order" element={<Order />} />
+      <Route path="/About" element={<About />} />
+      <Route element={<ShoppingCartProvider />}>
+        <Route path="/Order" element={<Order />} />
+      </Route>
     </Route>
   )
 );
