@@ -2,7 +2,7 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div>
+    <div className="container mx-auto">
       <ContactForm />
     </div>
   );
@@ -10,7 +10,7 @@ const Contact = () => {
 
 const ContactForm = () => {
   return (
-    <div>
+    <div className="flex flex-col ">
       <form>
         <div>
           <input type="text" placeholder="First Name" name="first_name"></input>

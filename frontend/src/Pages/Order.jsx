@@ -34,11 +34,13 @@ const Order = () => {
     setSubs(submarines);
   };
   return (
-    <div className="flex flex-col gap-10 items-center p-3">
-      <MenuSection name="Burgerz" items={burgerz} sectionID="burgerz" />
-      <MenuSection name="Subs" items={subs} sectionID="subs" />
-      <MenuSection name="Sides" items={sides} sectionID="sides" />
-      <MenuSection name="Drinks" items={drinks} sectionID="drinks" />
+    <div className="container mx-auto py-16 ">
+      <div className="flex flex-col gap-10 items-center p-3 space-y-6">
+        <MenuSection name="Burgerz" items={burgerz} sectionID="burgerz" />
+        <MenuSection name="Subs" items={subs} sectionID="subs" />
+        <MenuSection name="Sides" items={sides} sectionID="sides" />
+        <MenuSection name="Drinks" items={drinks} sectionID="drinks" />
+      </div>
     </div>
   );
 };

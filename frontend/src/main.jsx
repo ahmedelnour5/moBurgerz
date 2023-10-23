@@ -13,6 +13,7 @@ import Menu from "./Pages/Menu.jsx";
 import Order from "./Pages/Order.jsx";
 import ShoppingCartProvider from "./Context/ShoppingCartContext.jsx";
 import About from "./Pages/About.jsx";
+import Contact from "./Pages/Contact.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
       <Route index={true} path="/" element={<Landing />} />
       <Route path="/Menu" element={<Menu />} />
       <Route path="/About" element={<About />} />
+      <Route path="/Contact" element={<Contact />} />
       <Route element={<ShoppingCartProvider />}>
         <Route path="/Order" element={<Order />} />
       </Route>
