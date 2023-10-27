@@ -6,9 +6,12 @@ const Header = () => {
   return (
     <div className=" w-full mx-auto  shadow-md">
       <div className="container mx-auto flex justify-between  p-5 items-center">
-        <div className="w-32 h-auto">
-          <img src={logo} />
-        </div>
+        <Link to={"/"}>
+          <div className="w-32 h-auto">
+            <img src={logo} />
+          </div>
+        </Link>
+
         <Nav />
       </div>
     </div>
