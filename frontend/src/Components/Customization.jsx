@@ -4,10 +4,16 @@ const Customization = ({ menuItem }) => {
   const [premiums, setPremiums] = useState();
   const [toppings, setToppings] = useState();
   const [sauces, setSauces] = useState();
+  const [selectedToppings, setSelectedToppings] = useState([]);
+  const [selectedPremiums, setSelectedPremiums] = useState([]);
+  const [selectedModifications, setSelectedModifications] = useState([]);
 
   const includedIngredients = menuItem.description.split(/,\s*|, | & /);
   const subIngredients = includedIngredients.filter(
-    (ingredient) => ingredient !== "Beef patty" && ingredient !== "cheesesteak"
+    (ingredient) =>
+      ingredient !== "Beef patty" &&
+      ingredient !== "cheese steak" &&
+      ingredient !== "cheesesteak"
   );
   useEffect(() => {
     filterIngredients(menuItem);
@@ -37,12 +43,14 @@ const Customization = ({ menuItem }) => {
       <div className="w-10/12 text-center text-gray-400">
         <p className="text-sm">{menuItem.description}</p>
       </div>
-      <div className="divide-y p-2 flex flex-col gap-2 justify-center ">
+      <div className="divide-y p-2 flex flex-col justify-center space-y-5">
         <CustomSection title="Modify" customizations={subIngredients} />
         <CustomSection title="Premiums" customizations={premiums} />
         <CustomSection title="Toppings" customizations={toppings} />
         <CustomSection title="Sauces" customizations={sauces} />
-        <ControlButtons menuItem={menuItem} />
+        <div className="p-4 shadow-lg">
+          <ControlButtons menuItem={menuItem} />
+        </div>
       </div>
     </div>
   );
@@ -51,8 +59,8 @@ const Customization = ({ menuItem }) => {
 const CustomSection = ({ title, customizations }) => {
   return (
     <div>
-      <h3 className="text-lg mb-1 font-semibold">{title}</h3>
-      <div className="grid grid-cols-2 gap-2">
+      <h3 className="text-lg mb-1 font-semibold pt-2">{title}</h3>
+      <div className="grid grid-cols-2 gap-5">
         {customizations && customizations.length > 0
           ? customizations.map((customization) => (
               <OptionCard
@@ -62,6 +70,8 @@ const CustomSection = ({ title, customizations }) => {
                     ? customization.name
                     : `No ${customization}`
                 }
+                value={title}
+                id={customization.name}
               />
             ))
           : null}
@@ -70,10 +80,24 @@ const CustomSection = ({ title, customizations }) => {
   );
 };
 
-const OptionCard = ({ option }) => {
+const OptionCard = ({ option, value, id }) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = (e) => {
+    setIsChecked(!isChecked);
+    console.log(e.target);
+  };
+
   return (
     <div className="shadow-md rounded p-3">
-      <input type="checkbox" className="mr-2"></input>
+      <input
+        id={id}
+        type="checkbox"
+        name={value}
+        checked={isChecked}
+        className="mr-2"
+        onChange={handleCheckboxChange}
+      ></input>
       <span>{option}</span>
     </div>
   );
@@ -86,7 +110,7 @@ const ControlButtons = ({ menuItem }) => {
 
   const increment = () => setItemCount(itemCount + 1);
   return (
-    <div className=" flex justify-between w-full mt-2">
+    <div className=" flex justify-between w-full pt-2 px-3">
       <div className="flex justify-between items-center p-2 w-4/12">
         <button className="text-lg" onClick={decrement}>
           -
@@ -98,8 +122,8 @@ const ControlButtons = ({ menuItem }) => {
           +
         </button>
       </div>
-      <div className="w-8/12">
-        <button className="bg-red-600 font-semibold px-3 py-3  rounded-full text-white w-80 ">
+      <div className="">
+        <button className="bg-red-600 font-semibold px-5 py-2  rounded-full text-white w-64">
           {menuItem.price}
         </button>
       </div>

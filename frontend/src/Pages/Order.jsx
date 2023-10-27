@@ -2,40 +2,17 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import EditItemModal from "../Components/EditItemModal";
 import Customization from "../Components/Customization";
+import useOrderMenu from "../Hooks/useOrderMenu.js";
 
 const Order = () => {
-  const [burgerz, setBurgerz] = useState();
-  const [sides, setSides] = useState();
-  const [drinks, setDrinks] = useState();
-  const [subs, setSubs] = useState();
+  const { burgerz, subs, sides, drinks } = useOrderMenu();
 
-  useEffect(() => {
-    const getMenu = async () => {
-      try {
-        const response = await axios.get("/api/menu/Order");
+  const [orderItem, setOrderItem] = useState({});
+  const [orderItems, setOrderItems] = useState();
 
-        filterItems(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getMenu();
-  }, []);
-
-  const filterItems = (menuItems) => {
-    const burgers = menuItems.filter((item) => item.category === "Burgerz");
-    setBurgerz(burgers);
-    const beverages = menuItems.filter((item) => item.category === "Drinks");
-    setDrinks(beverages);
-    const sideDishes = menuItems.filter((item) => item.category === "Sides");
-    setSides(sideDishes);
-    const submarines = menuItems.filter((item) => item.category === "Subs");
-    setSubs(submarines);
-  };
   return (
     <div className="container mx-auto py-16 ">
-      <div className="flex flex-col gap-10 items-center p-3 space-y-6">
+      <div className="flex flex-col gap-10 items-center md:p-3 space-y-6">
         <MenuSection name="Burgerz" items={burgerz} sectionID="burgerz" />
         <MenuSection name="Subs" items={subs} sectionID="subs" />
         <MenuSection name="Sides" items={sides} sectionID="sides" />
@@ -49,7 +26,7 @@ const MenuSection = ({ name, items, sectionID }) => {
   return (
     <div className="w-full flex flex-col justify-center gap-2" id={sectionID}>
       <h2 className="text-5xl font-bold mb-4">{name}</h2>
-      <div className="grid grid-cols-2 gap-6 ">
+      <div className="flex flex-col md:items-center justify-center md:grid md:grid-cols-2 gap-6 px-1">
         {items && items.length > 0
           ? items.map((item) => <Card key={item._id} item={item} />)
           : null}
@@ -63,8 +40,8 @@ const Card = ({ item }) => {
 
   return (
     <>
-      <a className="w-7/12 " onClick={handleOpen}>
-        <MenuItemDetails menuItem={item} />
+      <a className=" p-2 w-96 md:w-7/12 " onClick={handleOpen}>
+        <MenuItemDetails menuItem={item} key={item._id} />
       </a>
       <EditItemModal open={open} onClose={() => setOpen(false)}>
         <Customization menuItem={item} />

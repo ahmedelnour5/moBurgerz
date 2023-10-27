@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Contact = () => {
   return (
@@ -12,10 +12,21 @@ const Contact = () => {
 };
 
 const ContactForm = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [message, setMessage] = useState();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="flex flex-col justify-center items-center">
-      <form className="p-10 space-y-3 w-96">
-        <div className="flex flex-col">
+      <form
+        className="p-10 space-y-3 w-full flex flex-col items-center "
+        onSubmit={handleSubmit}
+      >
+        <div className="flex flex-col ">
           <label for="name" className="">
             Name:
           </label>
@@ -24,7 +35,8 @@ const ContactForm = () => {
             placeholder="First Name"
             name="name"
             id="name"
-            className="border-2 border-black px-2 py-1"
+            className="border-2 border-black px-2 py-1 w-80"
+            onChange={(e) => setName(e.target.value)}
           ></input>
         </div>
         <div className="flex flex-col">
@@ -34,7 +46,8 @@ const ContactForm = () => {
             placeholder="Email"
             name="email"
             id="email"
-            className="border-2 border-black px-2 py-1"
+            className="border-2 border-black px-2 py-1 w-80"
+            onChange={(e) => setEmail(e.target.value)}
           ></input>
         </div>
         <div className="flex flex-col">
@@ -44,7 +57,8 @@ const ContactForm = () => {
             placeholder="Phone Number"
             name="phoneNumber"
             id="phoneNumber"
-            className="border-2 border-black px-2 py-1 block w-full"
+            className="border-2 border-black px-2 py-1 block w-80"
+            onChange={(e) => setPhoneNumber(e.target.value)}
           ></input>
         </div>
         <div className="flex flex-col">
@@ -53,13 +67,15 @@ const ContactForm = () => {
             placeholder="Message"
             name="message"
             id="message"
-            className="border-2 border-black"
+            className="border-2 border-black w-80 px-2 py-1"
+            onChange={(e) => setMessage(e.target.value)}
           ></textarea>
         </div>
         <div className="text-center">
           <button
             className="px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-black hover:text-white"
             type="submit"
+            onClick={handleSubmit}
           >
             Submit
           </button>
