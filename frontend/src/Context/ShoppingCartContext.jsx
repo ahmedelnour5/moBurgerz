@@ -6,12 +6,16 @@ export const ShoppingCartContext = createContext({
   addToCart: () => {},
   cartTotal: 0,
   getCartTotal: () => {},
+  getCartCount: () => {},
 });
 
 const ShoppingCartProvider = () => {
   const [cartItems, setCartItems] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
 
+  {
+    /*Calculate the total price for items in cart */
+  }
   const getCartTotal = (cartItems) => {
     let total = 0;
 
@@ -20,13 +24,24 @@ const ShoppingCartProvider = () => {
     }
     setCartTotal(total);
   };
+
+  {
+    /*Add items to the cart */
+  }
   const addToCart = (item) => {
     setCartItems([...cartItems, item]);
   };
 
+  {
+    /*Calculate the number of items in cart */
+  }
+  const getCartCount = () => {
+    return cartItems.length;
+  };
+
   return (
     <ShoppingCartContext.Provider
-      value={{ cartItems, addToCart, cartTotal, getCartTotal }}
+      value={{ cartItems, addToCart, cartTotal, getCartTotal, getCartCount }}
     >
       <Outlet />
     </ShoppingCartContext.Provider>
