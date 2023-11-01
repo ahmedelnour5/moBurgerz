@@ -17,12 +17,13 @@ import Contact from "./Pages/Contact.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      <Route index={true} path="/" element={<Landing />} />
-      <Route path="/Menu" element={<Menu />} />
-      <Route path="/About" element={<About />} />
-      <Route path="/Contact" element={<Contact />} />
-      <Route element={<ShoppingCartProvider />}>
+    <Route element={<ShoppingCartProvider />}>
+      <Route path="/" element={<App />}>
+        <Route index={true} path="/" element={<Landing />} />
+        <Route path="/Menu" element={<Menu />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/Contact" element={<Contact />} />
+
         <Route path="/Order" element={<Order />} />
       </Route>
     </Route>

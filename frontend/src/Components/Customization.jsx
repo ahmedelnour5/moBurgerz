@@ -1,15 +1,35 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import useCustomizeItem from "../Hooks/useCustomizeItem.js";
+import { ShoppingCartContext } from "../Context/ShoppingCartContext.jsx";
 
 const Customization = ({ menuItem }) => {
   const { subIngredients, premiums, toppings, sauces } = useCustomizeItem({
     menuItem,
   });
 
+  const { addToCart, cartItems } = useContext(ShoppingCartContext);
+
   const [selectedToppings, setSelectedToppings] = useState([]);
   const [selectedPremiums, setSelectedPremiums] = useState([]);
   const [selectedModifications, setSelectedModifications] = useState([]);
   const [selectedSauces, setSelectedSauces] = useState([]);
+
+  const handleCart = (itemCount, menuItem, price) => {
+    const selectedItem = {
+      id: menuItem._id,
+      item: menuItem.name,
+      toppings: selectedToppings.length > 0 ? selectedToppings : null,
+      modifications:
+        selectedModifications.length > 0
+          ? selectedModifications
+          : subIngredients,
+      sauces: selectedSauces.length > 0 ? selectedSauces : null,
+      price: price,
+      qty: itemCount,
+    };
+
+    addToCart(selectedItem);
+  };
 
   const handleSelectedToppings = (value, isChecked) => {
     if (isChecked) {
@@ -83,7 +103,7 @@ const Customization = ({ menuItem }) => {
           handleCustomization={handleSauces}
         />
         <div className="p-4 shadow-lg">
-          <ControlButtons menuItem={menuItem} />
+          <ControlButtons menuItem={menuItem} handleClick={handleCart} />
         </div>
       </div>
     </div>
@@ -147,7 +167,7 @@ const OptionCard = ({ option, value, id, handleCheckboxChange }) => {
   /*Buttons for increasing item qty, decreasing item qty, and adding item to cart */
 }
 
-const ControlButtons = ({ menuItem }) => {
+const ControlButtons = ({ menuItem, handleClick }) => {
   const [itemCount, setItemCount] = useState(1);
   const [price, setPrice] = useState(menuItem.price);
 
@@ -177,7 +197,11 @@ const ControlButtons = ({ menuItem }) => {
         </button>
       </div>
       <div className="">
-        <button className="bg-red-600 font-semibold px-5 py-2  rounded-full text-white w-64">
+        <button
+          className="bg-red-600 font-semibold px-5 py-2  rounded-full text-white w-64"
+          onClick={() => handleClick(itemCount, menuItem, price)}
+          id="cartAdd"
+        >
           {`$${price}`}
         </button>
       </div>

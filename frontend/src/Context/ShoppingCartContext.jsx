@@ -1,47 +1,86 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 export const ShoppingCartContext = createContext({
   cartItems: [],
   addToCart: () => {},
   cartTotal: 0,
-  getCartTotal: () => {},
   getCartCount: () => {},
+  getCartTotal: () => {},
+  subTotal: 0,
+  salesTax: 0,
 });
 
 const ShoppingCartProvider = () => {
   const [cartItems, setCartItems] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
+  const [subTotal, setSubTotal] = useState(0);
+  const storedItems = localStorage.getItem("cartItems");
+  const [salesTax, setSalesTax] = useState(0);
 
-  {
-    /*Calculate the total price for items in cart */
-  }
-  const getCartTotal = (cartItems) => {
+  const getCartTotal = () => {
     let total = 0;
-
-    for (const item of cartItems) {
-      total += item.price;
+    const vaTaxRate = 4.3 / 100;
+    for (const cartItem of cartItems) {
+      total += cartItem.price;
     }
-    setCartTotal(total);
+    const subTotal = total;
+    const salesTax = parseFloat((subTotal * vaTaxRate).toFixed(2)); // Format salesTax to two decimal places
+    const cartTotal = subTotal + salesTax;
+
+    setSubTotal(subTotal);
+    setSalesTax(salesTax);
+    setCartTotal(cartTotal);
   };
 
-  {
-    /*Add items to the cart */
-  }
   const addToCart = (item) => {
-    setCartItems([...cartItems, item]);
+    const itemExists = cartItems.find((cartItem) => cartItem.id === item.id);
+    if (itemExists) {
+      setCartItems(
+        cartItems.map((cartItem) =>
+          cartItem.id === item.id
+            ? {
+                ...cartItem,
+                qty: cartItem.qty + 1,
+                price: (cartItem.qty + 1) * cartItem.price,
+              }
+            : cartItem
+        )
+      );
+    } else {
+      setCartItems([...cartItems, item]);
+    }
+
+    getCartTotal();
   };
 
-  {
-    /*Calculate the number of items in cart */
-  }
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    getCartTotal();
+  }, [cartItems]);
+
   const getCartCount = () => {
     return cartItems.length;
   };
 
+  useEffect(() => {
+    if (storedItems) {
+      setCartItems(JSON.parse(storedItems));
+    }
+    getCartTotal();
+  }, []);
+
   return (
     <ShoppingCartContext.Provider
-      value={{ cartItems, addToCart, cartTotal, getCartTotal, getCartCount }}
+      value={{
+        cartItems,
+        addToCart,
+        cartTotal,
+        getCartTotal,
+        getCartCount,
+        subTotal,
+        salesTax,
+      }}
     >
       <Outlet />
     </ShoppingCartContext.Provider>

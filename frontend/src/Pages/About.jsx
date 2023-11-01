@@ -9,10 +9,10 @@ const About = () => {
           <div>
             <h2 className="text-5xl text-red-600 font-semibold">Our Story</h2>
           </div>
-          <div>
+          <div className="relative">
             <img className="w-[300] h-auto" src={story} />
           </div>
-          <div className="w-4/5 text-left">
+          <div className="w-4/5 relative">
             <p className="leading-10 ">
               Mo'Burgerz DC is bringing Washington, DC mo' and mo' burgers to
               sink their teeth into. Yes, you probably could've guessed as much.

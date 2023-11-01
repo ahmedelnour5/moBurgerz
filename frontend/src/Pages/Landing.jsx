@@ -64,7 +64,7 @@ const Gallery = () => {
       <div className="flex flex-col items-center">
         {/* */}
         <div className="pb-16">
-          <h2 className="text-3xl md:text-5xl text-black font-semibold tracking-wider ">
+          <h2 className="text-3xl md:text-5xl text-black font-semibold tracking-wider uppercase">
             Welcome to Mo'Burgerz
           </h2>
         </div>

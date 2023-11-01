@@ -7,9 +7,6 @@ import useOrderMenu from "../Hooks/useOrderMenu.js";
 const Order = () => {
   const { burgerz, subs, sides, drinks } = useOrderMenu();
 
-  const [orderItem, setOrderItem] = useState({});
-  const [orderItems, setOrderItems] = useState();
-
   return (
     <div className="container mx-auto py-16 ">
       <div className="flex flex-col gap-10 items-center md:p-3 space-y-6">
@@ -44,7 +41,7 @@ const Card = ({ item }) => {
         <MenuItemDetails menuItem={item} key={item._id} />
       </a>
       <EditItemModal open={open} onClose={() => setOpen(false)}>
-        <Customization menuItem={item} />
+        <Customization menuItem={item} key={item._id} />
       </EditItemModal>
     </>
   );
