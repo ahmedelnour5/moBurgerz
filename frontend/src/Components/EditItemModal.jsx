@@ -5,7 +5,11 @@ const EditItemModal = ({ open, onClose, children }) => {
   if (!open) return null;
 
   const handleClose = (e) => {
-    if (e.target.id === "cartAdd" || e.target.id === "wrapper") {
+    if (
+      e.target.id === "cartAdd" ||
+      e.target.id === "wrapper" ||
+      e.target.id === "edit"
+    ) {
       onClose();
     }
   };

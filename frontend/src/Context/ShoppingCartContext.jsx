@@ -7,6 +7,7 @@ export const ShoppingCartContext = createContext({
   cartTotal: 0,
   getCartCount: () => {},
   getCartTotal: () => {},
+  removeFromCart: () => {},
   subTotal: 0,
   salesTax: 0,
 });
@@ -54,6 +55,14 @@ const ShoppingCartProvider = () => {
     getCartTotal();
   };
 
+  const removeFromCart = (item) => {
+    const updatedItems = cartItems.filter(
+      (cartItem) => cartItem.id !== item.id
+    );
+    setCartItems(updatedItems);
+    getCartTotal();
+  };
+
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     getCartTotal();
@@ -78,6 +87,7 @@ const ShoppingCartProvider = () => {
         cartTotal,
         getCartTotal,
         getCartCount,
+        removeFromCart,
         subTotal,
         salesTax,
       }}

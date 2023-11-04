@@ -77,7 +77,9 @@ const Gallery = () => {
           </div>
           <div className="bg-red-600 text-white rounded-lg relative min-h-[40vh] lg:h-full max-h-full lg:max-w-full lg:w-full flex flex-col justify-center">
             <div className="flex flex-col justify-center items-center">
-              <h2 className="text-3xl lg:text-3xl mb-6 font-bold">Our Food</h2>
+              <h2 className="text-3xl md:text-4xl mb-6 font-semibold uppercase">
+                Our Food
+              </h2>
               <p className="text-base  text-center">
                 We offer a wide variety using the best ingredients
               </p>
@@ -125,7 +127,7 @@ const FollowTruck = () => {
   return (
     <section className="py-20">
       <div className="flex flex-col justify-center items-center">
-        <div className="pb-16 ">
+        <div className="pb-16 text-center">
           <h2 className="text-3xl md:text-5xl text-black font-semibold tracking-wider uppercase">
             Follow The Truck
           </h2>
@@ -133,10 +135,10 @@ const FollowTruck = () => {
         <div className="grid grid-cols-1 items-start lg:grid-cols-2 gap-5">
           <div className="bg-red-600 text-white  relative  min-h-[40vh] md:h-full max-h-full max-w-full w-full rounded-lg ">
             <div className="flex flex-col items-center justify-center h-full">
-              <h2 className="text-3xl md:text-5xl mb-6 font-semibold uppercase">
+              <h2 className="text-3xl md:text-4xl mb-6 font-semibold uppercase">
                 Follow The Burgerz
               </h2>
-              <p className="w-9/12 ">
+              <p className="w-8/12 text-center font-medium">
                 Check out our food truck schedules on social media to see
                 exactly where you can taste what everyone's talking about!
               </p>

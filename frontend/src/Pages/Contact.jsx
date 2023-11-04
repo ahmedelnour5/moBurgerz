@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const Contact = () => {
   return (
     <div className="container mx-auto ">
-      <div className="h-full flex flex-col justify-center">
+      <div className="h-full flex flex-col justify-center pt-11">
         <Heading />
         <ContactForm />
       </div>

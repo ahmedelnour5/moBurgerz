@@ -12,8 +12,8 @@ const About = () => {
           <div className="relative">
             <img className="w-[300] h-auto" src={story} />
           </div>
-          <div className="w-4/5 relative">
-            <p className="leading-10 ">
+          <div className="w-4/5 relative flex items-center justify-center">
+            <p className="leading-8">
               Mo'Burgerz DC is bringing Washington, DC mo' and mo' burgers to
               sink their teeth into. Yes, you probably could've guessed as much.
               What you might not guess, however, is that Mo'Burgerz DC is

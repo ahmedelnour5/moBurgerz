@@ -7,7 +7,7 @@ const Customization = ({ menuItem }) => {
     menuItem,
   });
 
-  const { addToCart, cartItems } = useContext(ShoppingCartContext);
+  const { addToCart } = useContext(ShoppingCartContext);
 
   const [selectedToppings, setSelectedToppings] = useState([]);
   const [selectedPremiums, setSelectedPremiums] = useState([]);
@@ -20,9 +20,7 @@ const Customization = ({ menuItem }) => {
       item: menuItem.name,
       toppings: selectedToppings.length > 0 ? selectedToppings : null,
       modifications:
-        selectedModifications.length > 0
-          ? selectedModifications
-          : subIngredients,
+        selectedModifications.length > 0 ? selectedModifications : null,
       sauces: selectedSauces.length > 0 ? selectedSauces : null,
       price: price,
       qty: itemCount,

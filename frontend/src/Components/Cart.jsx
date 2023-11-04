@@ -1,5 +1,7 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { ShoppingCartContext } from "../Context/ShoppingCartContext";
+import Customization from "../Components/Customization.jsx";
+import EditItemModal from "../Components/EditItemModal.jsx";
 
 const Cart = ({ open, onClose, items }) => {
   if (!open) return null;
@@ -13,11 +15,11 @@ const Cart = ({ open, onClose, items }) => {
   return (
     <div
       onClick={handleClose}
-      className="fixed top-0 bg-opacity-25 bg-blur-sm right-0 flex justify-center items-center shadow-lg z-10"
+      className="fixed top-10 bg-opacity-25 bg-blur-sm right-10 flex justify-center items-center shadow-xl z-10"
       id="shoppingCart"
     >
-      <div className=" w-[300px] md:w-[400px] ">
-        <div className=" bg-white p-3 rounded-md h-[500px] flex flex-col">
+      <div className=" w-[300px] md:w-[400px]">
+        <div className=" bg-white p-3  h-[500px] flex flex-col ">
           <div className="w-full flex justify-between">
             <h3 className="font-medium text-xl">Your Order</h3>
             <button
@@ -27,7 +29,7 @@ const Cart = ({ open, onClose, items }) => {
               X
             </button>
           </div>
-          <div className="flex flex-col justify-between w-full h-full">
+          <div className="flex flex-col justify-between w-full h-full divide-y">
             <div className="mt-2 flex flex-col items-center">
               {items && items.length > 0 ? (
                 items.map((item) => <CartItem cartItem={item} key={item.id} />)
@@ -46,13 +48,33 @@ const Cart = ({ open, onClose, items }) => {
 };
 
 const CartItem = ({ cartItem }) => {
+  const { removeFromCart } = useContext(ShoppingCartContext);
+  const notes = [
+    cartItem.modifications,
+    cartItem.sauces,
+    cartItem.premiums,
+  ].filter((arr) => arr != null);
+
   return (
-    <div className="flex flex-row w-full justify-between items-center my-2">
-      <div className="flex flex-row space-x-2 justify-center">
-        <span className="text-black">{cartItem.qty}</span>
-        <span className="text-black font-medium">{cartItem.item}</span>
+    <div className="flex flex-col w-full">
+      <div className="flex flex-row w-full justify-between items-center my-2">
+        <div className="flex flex-row space-x-2 justify-center">
+          <span className="text-black">{cartItem.qty}</span>
+          <div className="flex flex-col">
+            <span className="text-black font-medium">{cartItem.item}</span>
+            <span className="text-sm text-gray-400">
+              {notes.map((note) => note.join(", "))}
+            </span>
+            <a
+              className=" text-red-600  hover:text-black hover:cursor-pointer"
+              onClick={() => removeFromCart(cartItem)}
+            >
+              Remove
+            </a>
+          </div>
+        </div>
+        <span className="text-black place-self-start">{`$${cartItem.price}`}</span>
       </div>
-      <span className="text-black">{`$${cartItem.price}`}</span>
     </div>
   );
 };
