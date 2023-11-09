@@ -24,6 +24,7 @@ const Customization = ({ menuItem }) => {
       sauces: selectedSauces.length > 0 ? selectedSauces : null,
       price: price,
       qty: itemCount,
+      stripeID: menuItem.stripeID,
     };
 
     addToCart(selectedItem);
@@ -72,34 +73,39 @@ const Customization = ({ menuItem }) => {
     }
   };
   return (
-    <div className="flex flex-col items-center overflow-auto space-y-2">
-      <div>
-        <h2 className="text-lg font-bold">{menuItem.name}</h2>
-      </div>
-      <div className="w-10/12 text-center text-gray-400">
-        <p className="text-base">{menuItem.description}</p>
+    <div className="flex flex-col items-center overflow-auto space-y-2 divide-y">
+      <div className="flex flex-col items-center space-y-2">
+        <h2 className="text-xl font-bold">{menuItem.name}</h2>
+        <p className="text-base w-10/12 text-center text-gray-400">
+          {menuItem.description}
+        </p>
       </div>
       <div className="divide-y p-2 flex flex-col justify-center space-y-5">
-        <CustomSection
-          title="Modify"
-          customizations={subIngredients}
-          handleCustomization={handleSelectedModifications}
-        />
-        <CustomSection
-          title="Premiums"
-          customizations={premiums}
-          handleCustomization={handleSelectedPremiums}
-        />
-        <CustomSection
-          title="Toppings"
-          customizations={toppings}
-          handleCustomization={handleSelectedToppings}
-        />
-        <CustomSection
-          title="Sauces"
-          customizations={sauces}
-          handleCustomization={handleSauces}
-        />
+        {menuItem.description !== "" ? (
+          <>
+            <CustomSection
+              title="Modify"
+              customizations={subIngredients}
+              handleCustomization={handleSelectedModifications}
+            />
+            <CustomSection
+              title="Premiums"
+              customizations={premiums}
+              handleCustomization={handleSelectedPremiums}
+            />
+            <CustomSection
+              title="Toppings"
+              customizations={toppings}
+              handleCustomization={handleSelectedToppings}
+            />
+            <CustomSection
+              title="Sauces"
+              customizations={sauces}
+              handleCustomization={handleSauces}
+            />{" "}
+          </>
+        ) : null}
+
         <div className="p-4 shadow-lg">
           <ControlButtons menuItem={menuItem} handleClick={handleCart} />
         </div>

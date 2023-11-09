@@ -33,7 +33,7 @@ const Menu = () => {
   };
 
   return (
-    <div className="container flex flex-col  mx-auto">
+    <div className="container-sm flex flex-col  mx-auto px-3">
       <MenuCategory name="Burgerz" items={burgerz} />
       <MenuCategory name="Subs" items={subs} />
       <MenuCategory name="Sides" items={sides} />
@@ -44,11 +44,9 @@ const Menu = () => {
 
 const MenuCategory = ({ name, items }) => {
   return (
-    <div className="flex flex-col items-center  border-double border-8 border-red-600 my-7  divide-red-600 relative">
-      <div className=" w-full text-center p-2">
-        <h2 className="text-3xl font-bold text-red-600 odd:text-white px-4  odd:bg-red-600  even:bg-white">
-          {name}
-        </h2>
+    <div className="flex flex-col items-center  border-double border-8 border-red-600 my-7 relative">
+      <div className=" w-full text-center p-2 even:bg-white even:text-black odd:bg-red-600 odd:text-white">
+        <h2 className="text-3xl font-bold border-b-red-600">{name}</h2>
       </div>
       <div className="p-3">
         {items && items.length > 0
@@ -62,7 +60,7 @@ const MenuCategory = ({ name, items }) => {
 const MenuItem = ({ item }) => {
   return (
     <div className="flex flex-col items-center my-5 text-center">
-      <p className="text-lg font-medium mb-0.5">{item.name}</p>
+      <p className="text-2xl font-medium mb-0.5">{item.name}</p>
       <p className=" text-base  w-3/5  lg:w-10/12 text-zinc-700 font-sm ">
         {item.description}
       </p>

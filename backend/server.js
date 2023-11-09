@@ -1,22 +1,25 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import userRoutes from './routes/userRoutes.js';
-import menuRoutes from './routes/menuRoutes.js';
-import { notFound, errorHandler } from './middleware/errorMiddleware.js';
-import cookieParser from 'cookie-parser';
-import connectDB from './config/db.js';
+import express from "express";
+import dotenv from "dotenv";
+import userRoutes from "./routes/userRoutes.js";
+import menuRoutes from "./routes/menuRoutes.js";
+import checkoutRoutes from "./routes/checkoutRoutes.js";
+import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
+import cookieParser from "cookie-parser";
+import connectDB from "./config/db.js";
 dotenv.config();
 
-const port = process.env.PORT || '8080';
+const port = process.env.PORT || "8080";
 connectDB();
 const app = express();
 
+app.use(express.static("public"));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/users', userRoutes);
-app.use('/api/menu', menuRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/menu", menuRoutes);
+app.use("/api/checkout", checkoutRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

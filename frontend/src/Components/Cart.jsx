@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
+import axios from "axios";
 import { ShoppingCartContext } from "../Context/ShoppingCartContext";
-import Customization from "../Components/Customization.jsx";
-import EditItemModal from "../Components/EditItemModal.jsx";
 
 const Cart = ({ open, onClose, items }) => {
   if (!open) return null;
@@ -10,6 +9,14 @@ const Cart = ({ open, onClose, items }) => {
     if (e.target.id === "shoppingCart") {
       onClose();
     }
+  };
+
+  const handleCheckout = async () => {
+    const cartItems = items;
+    onClose();
+
+    const response = await axios.post("/api/checkout", cartItems);
+    window.location.assign(response.data);
   };
 
   return (
@@ -39,7 +46,9 @@ const Cart = ({ open, onClose, items }) => {
                 </span>
               )}
             </div>
-            {items && items.length > 0 ? <Checkout /> : null}
+            {items && items.length > 0 ? (
+              <Checkout handleClick={handleCheckout} />
+            ) : null}
           </div>
         </div>
       </div>
@@ -79,7 +88,7 @@ const CartItem = ({ cartItem }) => {
   );
 };
 
-const Checkout = () => {
+const Checkout = ({ handleClick }) => {
   const { cartTotal, subTotal, salesTax } = useContext(ShoppingCartContext);
 
   return (
@@ -93,7 +102,10 @@ const Checkout = () => {
           <span>Tax</span>
           <span>{`$${parseFloat(salesTax).toFixed(2)}`}</span>
         </div>
-        <button className="px-2 py-2 font-medium bg-red-600 text-white rounded-lg flex flex-row justify-between w-full">
+        <button
+          className="px-2 py-2 font-medium bg-red-600 text-white rounded-lg flex flex-row justify-between w-full hover:bg-black hover:text-white hover:cursor-pointer"
+          onClick={() => handleClick()}
+        >
           <span>Checkout</span>
           <span>{`$${cartTotal}`}</span>
         </button>

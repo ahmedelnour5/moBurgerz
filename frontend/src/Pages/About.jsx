@@ -7,13 +7,13 @@ const About = () => {
       <div className="container mx-auto ">
         <div className="flex flex-col justify-center items-center  py-32 space-y-6">
           <div>
-            <h2 className="text-5xl text-red-600 font-semibold">Our Story</h2>
+            <h2 className="text-5xl text-red-600 font-bold uppercase">
+              Our Story
+            </h2>
           </div>
-          <div className="relative">
-            <img className="w-[300] h-auto" src={story} />
-          </div>
-          <div className="w-4/5 relative flex items-center justify-center">
-            <p className="leading-8">
+          <div className="flex flex-col justify-center items-center">
+            <img className="max-w-[800px] h-auto mb-7" src={story} />
+            <p className="leading-8 max-w-[800px]">
               Mo'Burgerz DC is bringing Washington, DC mo' and mo' burgers to
               sink their teeth into. Yes, you probably could've guessed as much.
               What you might not guess, however, is that Mo'Burgerz DC is

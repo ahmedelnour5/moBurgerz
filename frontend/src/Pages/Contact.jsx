@@ -87,7 +87,7 @@ const ContactForm = () => {
 
 const Heading = () => {
   return (
-    <div className="flex flex-col justify-center items-center space-y-4 pb-24 text-center">
+    <div className="flex flex-col justify-center items-center space-y-3 pb-16 text-center">
       <h2 className="text-6xl font-bold mb-6">Contact Us</h2>
       <p>Send us a message and we’ll get back to you as soon as possible.</p>
       <p>Looking forward to hearing from you</p>

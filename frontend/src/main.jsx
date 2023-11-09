@@ -14,6 +14,8 @@ import Order from "./Pages/Order.jsx";
 import ShoppingCartProvider from "./Context/ShoppingCartContext.jsx";
 import About from "./Pages/About.jsx";
 import Contact from "./Pages/Contact.jsx";
+import Success from "./Pages/Success.jsx";
+import Cancel from "./Pages/Cancel.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,8 +25,9 @@ const router = createBrowserRouter(
         <Route path="/Menu" element={<Menu />} />
         <Route path="/About" element={<About />} />
         <Route path="/Contact" element={<Contact />} />
-
         <Route path="/Order" element={<Order />} />
+        <Route path="/Success" element={<Success />} />
+        <Route path="/Cancel" element={<Cancel />} />
       </Route>
     </Route>
   )
