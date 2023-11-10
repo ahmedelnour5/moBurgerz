@@ -34,23 +34,19 @@ const Main = () => {
 const CopyText = () => {
   return (
     <div className="flex flex-col justify-center items-center h-full text-center">
-      <div>
-        <h1 className="px-1 text-6xl md:text-8xl font-bold text-white">
-          Mo'Burgerz
-        </h1>
-      </div>
-      <div className="my-6 ">
-        <p className="text-xl md:text-3xl leading-8 font-normal text-white">
-          Redefining the burger scene in the D.M.V.<br></br> Get Ready to Savor
-          Every Bite!
-        </p>
-      </div>
+      <h1 className="font-gluten font-bold text-4xl lg:text-7xl uppercase tracking-wide text-white">
+        Mo'Burgerz
+      </h1>
+      <p className="text-xl md:text-3xl leading-8 font-normal text-white mb-4">
+        Redefining the burger scene in the D.M.V.<br></br> Get Ready to Savor
+        Every Bite!
+      </p>
       <div className="flex space-x-5 justify-center">
-        <button className="bg-red-600 text-white font-semibold px-6 py-3  rounded-lg hover:bg-black">
+        <button className="bg-red-600 text-white font-semibold px-6 py-3  rounded-lg hover:bg-black font-gluten uppercase">
           <Link to={"/Order"}>Order Online</Link>
         </button>
 
-        <button className="outline outline-red-600 bg-white text-black  px-6 py-3  rounded-lg hover:bg-red-600 hover:text-white">
+        <button className="outline outline-red-600 bg-white text-black  px-6 py-3  rounded-lg hover:bg-red-600 hover:text-white font-gluten uppercase">
           <Link to={"/Menu"}>View Menu</Link>
         </button>
       </div>
@@ -64,7 +60,7 @@ const Gallery = () => {
       <div className="flex flex-col items-center">
         {/* */}
         <div className="pb-16">
-          <h2 className="text-3xl md:text-5xl text-black font-semibold tracking-wider uppercase">
+          <h2 className="font-gluten font-semibold text-3xl lg:text-5xl uppercase -tracking-[2px]">
             Welcome to Mo'Burgerz
           </h2>
         </div>
@@ -77,13 +73,13 @@ const Gallery = () => {
           </div>
           <div className="bg-red-600 text-white rounded-lg relative min-h-[40vh] lg:h-full max-h-full lg:max-w-full lg:w-full flex flex-col justify-center">
             <div className="flex flex-col justify-center items-center">
-              <h2 className="text-3xl md:text-4xl mb-6 font-semibold uppercase">
+              <h2 className="font-gluten font-semibold text-3xl lg:text-5xl uppercase -tracking-[2px]">
                 Our Food
               </h2>
               <p className="text-base  text-center">
                 We offer a wide variety using the best ingredients
               </p>
-              <button className="outline outline-red-600 bg-white text-black  px-6 py-3  rounded-lg hover:bg-black hover:text-white mt-4">
+              <button className="outline outline-red-600 bg-white text-black  px-6 py-3  rounded-lg hover:bg-black hover:text-white mt-4 font-gluten uppercase">
                 <Link to={"/Menu"} className="font-medium">
                   View Menus
                 </Link>
@@ -106,13 +102,13 @@ const Catering = () => {
     >
       <div className="backdrop-opacity-70 h-full">
         <div className="h-full flex flex-col justify-center items-center">
-          <h2 className="text-6xl text-white font-bold tracking-wider mb-6">
+          <h2 className="font-gluten font-semibold text-3xl lg:text-6xl uppercase -tracking-[2px] mb-5 text-white">
             CATERING
           </h2>
           <p className="text-white my-4 text-xl font-medium">
             Let us Cater Your Next Event
           </p>
-          <button className=" bg-red-600 text-white  px-6 py-3  rounded-lg hover:bg-black hover:text-white">
+          <button className=" bg-red-600 text-white  px-6 py-3  rounded-lg hover:bg-black hover:text-white font-gluten uppercase">
             <Link to={"/Menu"} className="font-semibold">
               Inquire Now
             </Link>
@@ -125,24 +121,24 @@ const Catering = () => {
 
 const FollowTruck = () => {
   return (
-    <section className="py-20">
-      <div className="flex flex-col justify-center items-center">
+    <section className="py-20 overflow-x-hidden">
+      <div className="flex flex-col justify-center items-center ">
         <div className="pb-16 text-center">
-          <h2 className="text-3xl md:text-5xl text-black font-semibold tracking-wider uppercase">
+          <h2 className="font-gluten font-semibold text-3xl lg:text-5xl uppercase -tracking-2">
             Follow The Truck
           </h2>
         </div>
-        <div className="grid grid-cols-1 items-start lg:grid-cols-2 gap-5">
-          <div className="bg-red-600 text-white  relative  min-h-[40vh] md:h-full max-h-full max-w-full w-full rounded-lg ">
-            <div className="flex flex-col items-center justify-center h-full">
-              <h2 className="text-3xl md:text-4xl mb-6 font-semibold uppercase">
+        <div className="grid grid-cols-1 items-start lg:grid-cols-2 gap-5 text-center lg:px-10">
+          <div className="bg-red-600 text-white  relative  min-h-[40vh] md:h-full max-h-full max-w-full w-full rounded-lg flex flex-col justify-center ">
+            <div className="flex flex-col items-center justify-center h-full ">
+              <h2 className="font-gluten font-semibold text-3xl lg:text-5xl uppercase -tracking-[2px] mb-5">
                 Follow The Burgerz
               </h2>
-              <p className="w-8/12 text-center font-medium">
+              <p className=" font-normal leading-5 ">
                 Check out our food truck schedules on social media to see
                 exactly where you can taste what everyone's talking about!
               </p>
-              <button className="outline outline-red-600 bg-white text-black  px-7 py-3  rounded-lg  hover:bg-black hover:text-white mt-4">
+              <button className="outline outline-red-600 bg-white text-black  px-7 py-3  rounded-lg  hover:bg-black hover:text-white mt-4 font-gluten border-white uppercase">
                 <Link to={"/Menu"} className="font-medium">
                   Lets Go
                 </Link>
@@ -150,9 +146,10 @@ const FollowTruck = () => {
             </div>
           </div>
           <div className="relative">
+            {/*m-0 */}
             <img
               src={truck}
-              className="m-0 rounded-lg md:max-w-full h-auto object-cover md:w-full "
+              className=" m-0 rounded-lg md:max-w-full h-auto object-cover md:w-full  "
             />
           </div>
         </div>

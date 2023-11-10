@@ -22,10 +22,10 @@ const Cart = ({ open, onClose, items }) => {
   return (
     <div
       onClick={handleClose}
-      className="fixed top-10 bg-opacity-25 bg-blur-sm right-10 flex justify-center items-center shadow-xl z-10"
+      className="fixed top-20 md:top-10 bg-opacity-25 bg-blur-sm right-10 flex justify-center items-center shadow-xl z-10"
       id="shoppingCart"
     >
-      <div className=" w-[300px] md:w-[400px]">
+      <div className="w-[350px] lg:w-[400px]">
         <div className=" bg-white p-3  h-[500px] flex flex-col ">
           <div className="w-full flex justify-between">
             <h3 className="font-medium text-xl">Your Order</h3>

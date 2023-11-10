@@ -73,14 +73,13 @@ const Customization = ({ menuItem }) => {
     }
   };
   return (
-    <div className="flex flex-col items-center overflow-auto space-y-2 divide-y">
-      <div className="flex flex-col items-center space-y-2">
-        <h2 className="text-xl font-bold">{menuItem.name}</h2>
-        <p className="text-base w-10/12 text-center text-gray-400">
-          {menuItem.description}
-        </p>
-      </div>
-      <div className="divide-y p-2 flex flex-col justify-center space-y-5">
+    <div className="flex flex-col items-center overflow-x-hidden lg:overflow-auto space-y-2 divide-y">
+      <h2 className="text-xl font-bold">{menuItem.name}</h2>
+      <p className="text-sm lg:text-base w-10/12 text-center text-gray-400">
+        {menuItem.description}
+      </p>
+
+      <div className="divide-y p-2 flex flex-col justify-center items-center lg:space-y-5">
         {menuItem.description !== "" ? (
           <>
             <CustomSection
@@ -116,9 +115,9 @@ const Customization = ({ menuItem }) => {
 
 const CustomSection = ({ title, customizations, handleCustomization }) => {
   return (
-    <div>
-      <h3 className="text-lg mb-1 font-semibold pt-2">{title}</h3>
-      <div className="grid grid-cols-2 gap-5">
+    <div className="w-full px-10 mb-1">
+      <h3 className=" text-md md:text-lg mb-3 font-semibold pt-2">{title}</h3>
+      <div className=" lg:grid  lg:grid-cols-2 gap-5 space-y-2 lg:space-y-0">
         {customizations && customizations.length > 0
           ? customizations.map((customization) => (
               <OptionCard
@@ -153,7 +152,7 @@ const OptionCard = ({ option, value, id, handleCheckboxChange }) => {
   };
 
   return (
-    <div className="shadow-md rounded p-3">
+    <div className="shadow-md rounded p-3 text-sm md:text-base lg:w-auto w-9/12">
       <input
         id={id}
         type="checkbox"
@@ -188,7 +187,7 @@ const ControlButtons = ({ menuItem, handleClick }) => {
   };
 
   return (
-    <div className=" flex justify-between w-full pt-2 px-3">
+    <div className=" flex justify-between lg:w-full pt-2 px-3">
       <div className="flex justify-between items-center p-2 w-4/12">
         <button className="text-lg" onClick={decrement}>
           -
