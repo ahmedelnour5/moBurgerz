@@ -46,7 +46,9 @@ const MenuCategory = ({ name, items }) => {
   return (
     <div className="flex flex-col items-center  border-double border-8 border-red-600 my-7 relative">
       <div className=" w-full text-center p-2 even:bg-white even:text-black odd:bg-red-600 odd:text-white">
-        <h2 className="text-3xl font-bold border-b-red-600">{name}</h2>
+        <h2 className="text-4xl font-bold border-b-red-600 font-gluten uppercase -tracking-[2px]">
+          {name}
+        </h2>
       </div>
       <div className="p-3">
         {items && items.length > 0

@@ -20,11 +20,22 @@ const checkout = asyncHandler(async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: lineItems,
     mode: "payment",
-    success_url: "http://localhost:3000/Success",
+    success_url:
+      "http://localhost:3000/Success?session_id={CHECKOUT_SESSION_ID}",
     cancel_url: "http://localhost:3000/Cancel",
   });
 
   res.json(session.url);
 });
 
-export { checkout };
+const success = asyncHandler(async (req, res) => {
+  const { session_id } = req.query;
+
+  const session = await stripe.checkout.sessions.retrieve(session_id);
+
+  res.json({
+    userSession: session,
+  });
+});
+
+export { checkout, success };

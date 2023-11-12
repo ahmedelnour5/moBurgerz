@@ -73,7 +73,7 @@ const ContactForm = () => {
         </div>
         <div className="text-center">
           <button
-            className="px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-black hover:text-white"
+            className="px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-black hover:text-white font-gluten uppercase"
             type="submit"
             onClick={handleSubmit}
           >

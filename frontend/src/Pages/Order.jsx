@@ -22,7 +22,9 @@ const Order = () => {
 const MenuSection = ({ name, items, sectionID }) => {
   return (
     <div className="w-full flex flex-col justify-center gap-2" id={sectionID}>
-      <h2 className="text-5xl font-bold mb-4">{name}</h2>
+      <h2 className="text-4xl font-bold mb-4 font-gluten -tracking-[2px] uppercase">
+        {name}
+      </h2>
       <div className="flex flex-col md:items-center justify-center md:grid md:grid-cols-2 gap-6 px-1">
         {items && items.length > 0
           ? items.map((item) => <Card key={item._id} item={item} />)

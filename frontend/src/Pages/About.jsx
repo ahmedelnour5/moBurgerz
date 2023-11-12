@@ -7,7 +7,7 @@ const About = () => {
       <div className="container mx-auto ">
         <div className="flex flex-col justify-center items-center  py-32 space-y-6">
           <div>
-            <h2 className="text-5xl text-red-600 font-bold uppercase">
+            <h2 className="text-4xl text-red-600 font-bold uppercase font-gluten">
               Our Story
             </h2>
           </div>
