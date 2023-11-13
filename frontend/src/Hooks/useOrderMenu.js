@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "axios/axios.js";
 
 const useOrderMenu = () => {
   const [burgerz, setBurgerz] = useState();

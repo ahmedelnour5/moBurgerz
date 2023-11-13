@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import EditItemModal from "../Components/EditItemModal";
 import Customization from "../Components/Customization";
 import useOrderMenu from "../Hooks/useOrderMenu.js";
