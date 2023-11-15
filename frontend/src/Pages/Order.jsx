@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import EditItemModal from "../Components/EditItemModal";
 import Customization from "../Components/Customization";
 import useOrderMenu from "../Hooks/useOrderMenu.js";
