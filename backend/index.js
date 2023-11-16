@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv/config.js";
+import dotenv from "dotenv";
+dotenv.config({ path: "../.env" });
 import menuRoutes from "./routes/menuRoutes.js";
 import checkoutRoutes from "./routes/checkoutRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
-import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
 
 const port = process.env.PORT || "8080";
