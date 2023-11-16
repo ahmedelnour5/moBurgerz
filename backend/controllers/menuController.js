@@ -1,6 +1,5 @@
 import asyncHandler from "express-async-handler";
 import MenuItem from "../models/menuItemModel.js";
-import Ingredients from "../models/ingredientsModel.js";
 
 const getMenu = asyncHandler(async (req, res) => {
   const items = await MenuItem.find().sort({ category: 1 });
