@@ -26,3 +26,5 @@ app.get("/", (req, res) => res.json("Server is ready"));
 app.use(notFound);
 app.use(errorHandler);
 app.listen(port, () => console.log(`Server started on port ${port}`));
+
+export { app };
