@@ -18,9 +18,9 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/users", userRoutes);
-app.use("/menu", menuRoutes);
-app.use("/checkout", checkoutRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/menu", menuRoutes);
+app.use("/api/checkout", checkoutRoutes);
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
