@@ -75,14 +75,14 @@ const logoutCustomer = (req, res) => {
 // @route   GET /api/users/profile
 // @access  Private
 const getCustomerProfile = asyncHandler(async (req, res) => {
-  res.send('get profile');
+  res.json('get profile');
 });
 
 // @desc    Update user profile
 // @route   PUT /api/users/profile
 // @access  Private
 const updateCustomerProfile = asyncHandler(async (req, res) => {
-  res.send('update profile');
+  res.json('update profile');
 });
 
 export {
