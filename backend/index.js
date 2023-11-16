@@ -1,8 +1,6 @@
 import express from "express";
-import path from "path";
 import cors from "cors";
 import dotenv from "dotenv";
-import userRoutes from "./routes/userRoutes.js";
 import menuRoutes from "./routes/menuRoutes.js";
 import checkoutRoutes from "./routes/checkoutRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
