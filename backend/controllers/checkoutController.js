@@ -1,4 +1,3 @@
-
 import asyncHandler from "express-async-handler";
 import { Stripe } from "stripe";
 
@@ -21,8 +20,8 @@ const checkout = asyncHandler(async (req, res) => {
     line_items: lineItems,
     mode: "payment",
     success_url:
-      "http://localhost:3000/Success?session_id={CHECKOUT_SESSION_ID}",
-    cancel_url: "http://localhost:3000/Cancel",
+      "https://mo-burgerz-backend.vercel.app/Success?session_id={CHECKOUT_SESSION_ID}",
+    cancel_url: "https://mo-burgerz-backend.vercel.app/Cancel",
   });
 
   res.json(session.url);
