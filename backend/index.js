@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
+import * as dotenv from "dotenv";
 dotenv.config({ path: "../.env" });
 import menuRoutes from "./routes/menuRoutes.js";
 import checkoutRoutes from "./routes/checkoutRoutes.js";
