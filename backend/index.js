@@ -20,9 +20,9 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/users", userRoutes);
-app.use("/api/menu", menuRoutes);
-app.use("/api/checkout", checkoutRoutes);
+app.use("api/users", userRoutes);
+app.use("api/menu", menuRoutes);
+app.use("api/checkout", checkoutRoutes);
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"))
   );
 } else {
-  app.get("/", (req, res) => res.send("Server is ready"));
+  app.get("/", (req, res) => res.json("Server is ready"));
 }
 
 app.use(notFound);
