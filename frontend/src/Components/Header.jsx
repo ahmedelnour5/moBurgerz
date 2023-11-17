@@ -66,7 +66,7 @@ const Nav = () => {
       </div>
       {showNav && (
         <div className="flex flex-col w-full flex-wrap items-center justify-center space-y-2 min-h-[40vh]">
-          <NavLinks />
+          <MobileLinks handleClick={toggleNav} />
           {location.pathname === "/Order" ? (
             <>
               <IconButton onClick={handleOpen}>
@@ -102,6 +102,34 @@ const NavLinks = () => {
         About
       </Link>
       <Link to={"/Contact"} className="mx-4 hover:border-b-2 border-black">
+        Contact
+      </Link>
+    </>
+  );
+};
+
+const MobileLinks = ({ handleClick }) => {
+  return (
+    <>
+      <Link
+        to={"/Menu"}
+        className="mx-4 hover:border-b-2 border-black"
+        onClick={() => handleClick()}
+      >
+        Menu
+      </Link>
+      <Link
+        to={"/About"}
+        className="mx-4 hover:border-b-2 border-black"
+        onClick={() => handleClick()}
+      >
+        About
+      </Link>
+      <Link
+        to={"/Contact"}
+        className="mx-4 hover:border-b-2 border-black"
+        onClick={() => handleClick()}
+      >
         Contact
       </Link>
     </>
