@@ -5,9 +5,7 @@ const menuItemSchema = mongoose.Schema({
   price: Number,
   category: String,
   description: String,
-  modifications: [
-    { type: mongoose.SchemaTypes.ObjectId, ref: "Ingridients  " },
-  ],
+  modifications: [{ type: mongoose.SchemaTypes.ObjectId, ref: "Ingridients" }],
 });
 
 const MenuItem = mongoose.model("MenuItem", menuItemSchema);
