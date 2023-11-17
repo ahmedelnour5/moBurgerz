@@ -10,7 +10,7 @@ const useOrderMenu = () => {
   useEffect(() => {
     const getMenu = async () => {
       try {
-        const response = await axios.get("/api/menu/Order");
+        const response = await axios.get("https://mo-burgerz.vercel.app/api/menu/Order");
 
         filterItems(response.data);
       } catch (error) {

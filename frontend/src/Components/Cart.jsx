@@ -15,7 +15,10 @@ const Cart = ({ open, onClose, items }) => {
     const cartItems = items;
     onClose();
 
-    const response = await axios.post("/api/checkout", cartItems);
+    const response = await axios.post(
+      "https://mo-burgerz.vercel.app/api/checkout",
+      cartItems
+    );
     window.location.assign(response.data);
   };
 
