@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import cors from "cors";
 import menuRoutes from "./routes/menuRoutes.js";
 import checkoutRoutes from "./routes/checkoutRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
@@ -8,6 +9,13 @@ import connectDB from "./config/db.js";
 const port = process.env.PORT || "8080";
 connectDB();
 const app = express();
+app.use(
+  cors({
+    origin: ["https://mo-burgerz-client.vercel.app/"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -16,17 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/menu", menuRoutes);
 app.use("/api/checkout", checkoutRoutes);
-
-if (process.env.NODE_ENV === "production") {
-  const __dirname = path.resolve();
-  app.use(express.static(path.join(__dirname, "/frontend/dist")));
-
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"))
-  );
-} else {
-  app.get("/", (req, res) => res.send("Server is ready"));
-}
+app.get("/", (req, res) => res.send("Server is ready"));
 
 app.use(notFound);
 app.use(errorHandler);
