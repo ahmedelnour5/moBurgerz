@@ -5,5 +5,5 @@ const ingridientSchema = mongoose.Schema({
   category: String,
 });
 
-const Ingridients = mongoose.model("Ingridients", ingridientSchema);
-export default Ingridients;
+const Ingredients = mongoose.model("Ingridients", ingridientSchema);
+export default Ingredients;
