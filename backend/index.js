@@ -12,7 +12,7 @@ connectDB();
 const app = express();
 app.use(
   cors({
-    origin: ["https://mo-burgerz-client.vercel.app/"],
+    origin: ["https://mo-burgerz-client.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true,
   })
