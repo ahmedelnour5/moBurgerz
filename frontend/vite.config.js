@@ -9,7 +9,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://mo-burgerz-backend.vercel.app/",
+        target: "https://mo-burgerz.vercel.app/",
         changeOrigin: true,
       },
     },
