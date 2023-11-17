@@ -84,7 +84,11 @@ const Nav = () => {
               />
             </>
           ) : (
-            <OrderOnlineBtn />
+            <Link to={"/Order"} onClick={() => toggleNav()}>
+              <button className="bg-red-600 text-white font-semibold px-6 py-3  rounded-lg hover:bg-black font-gluten uppercase -tracking-[-1px]">
+                Order Online
+              </button>
+            </Link>
           )}
         </div>
       )}
