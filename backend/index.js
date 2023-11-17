@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import "dotenv/config.js";
+import "dotenv/config";
 import path from "path";
 import menuRoutes from "./routes/menuRoutes.js";
 import checkoutRoutes from "./routes/checkoutRoutes.js";
