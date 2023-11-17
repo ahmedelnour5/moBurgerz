@@ -6,12 +6,5 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react(), commonjs],
   define: { _global: {} },
-  server: {
-    proxy: {
-      "/api": {
-        target: "https://mo-burgerz.vercel.app/",
-        changeOrigin: true,
-      },
-    },
-  },
+
 });
