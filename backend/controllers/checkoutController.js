@@ -20,8 +20,8 @@ const checkout = asyncHandler(async (req, res) => {
     line_items: lineItems,
     mode: "payment",
     success_url:
-      "https://mo-burgerz-backend.vercel.app/Success?session_id={CHECKOUT_SESSION_ID}",
-    cancel_url: "https://mo-burgerz-backend.vercel.app/Cancel",
+      "https://mo-burgerz.vercel.app/Success?session_id={CHECKOUT_SESSION_ID}",
+    cancel_url: "https://mo-burgerz.vercel.app/Cancel",
   });
 
   res.json(session.url);
