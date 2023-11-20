@@ -35,7 +35,7 @@ const Menu = () => {
   };
 
   return (
-    <div className="container-sm flex flex-col  mx-auto px-3">
+    <div className="container-sm flex flex-col  mx-auto px-3 overflow-x-hidden">
       <MenuCategory name="Burgerz" items={burgerz} />
       <MenuCategory name="Subs" items={subs} />
       <MenuCategory name="Sides" items={sides} />
